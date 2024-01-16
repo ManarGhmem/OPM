@@ -1,0 +1,118 @@
+<ng-container>
+  <div class="page-header card" id="myheader">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="page-header-title">
+          <span><i class="fas fa-solid fa-folder" style="background-color: #B39188"></i></span>
+          <div class="d-inline">
+            <span class="d-block text-primary">
+              <br>
+              <h4>Folders</h4>
+            </span>
+            <!-- <span class="text-dark">Tax Page</span> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Page-header end -->
+
+  <div class="row">
+
+    <div class="col-lg-12">
+      <div class="md-tabs">
+        <div class="m-t-15">
+          <div class="card">
+            <div class="col-sm-12">
+              <div class="card-header">
+                <h3 class="card-header-text">Folders list</h3>
+                <div class="col-md-12 col-lg-3 offset-lg-10">
+                  <div class="pcoded-search">
+                    <div class="pcoded-search-box">
+                      <!-- <button class="btn " (click)="OpenModal('NEW_TAX')">
+                        <i class="icofont icofont-ui-add"></i>
+                        NEW
+                      </button> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <!-- <div class="col-sm-4 mb-5 mr-2">
+                    <select class="form-select" value="-1" (change)="changeSelectedFile($event.target.value)">
+                      <option value="-1" disabled>
+                        Select Option
+                      </option>
+                      <option value="true" > Active Account </option>
+                      <option value="false"> Inactive Account</option>
+                    </select>
+                  </div> -->
+
+
+                  <div class="col-sm-1 mb-5 mr-2 ml-4" *ngIf="this.upload">
+                    <button class="btn" (click)="OpenModal('NEW_ACCOUNTING_PLAN_ROW')">
+                      <i class="fas fa-plus-square"></i>
+                      {{'ACCOUNTING_PLAN_COMPONENT.NEW_ROW'|translate}}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true">
+                <div >
+                
+                  <table class="table table-striped mb-0"  style="background-color: #e8d5cc;" >
+                    <thead style="background-color: #B39188;">
+                        <tr>
+                          <th scope="col">Company name</th>
+                          <th scope="col">Folder name</th>
+                          <th scope="col">Actions</th>
+                          
+                        </tr>
+                    </thead>
+                  
+                    <tbody *ngFor="let client of this.clientList|paginate: { itemsPerPage: 1, currentPage: p }">
+                      
+                      <td>{{
+                          client.clientId.company}} </td>
+
+                          <td> {{
+                            client.name}} </td>
+
+                        
+                          <td >
+                            <a [routerLink]="[
+                            '/app/workOrderDetail/',
+                             client.clientId._id,
+                             client.name,
+                             client.clientId.company]">  <i  class="fa fa-eye ml-2"></i></a>                            <!-- <i class="fa fa-check" aria-hidden="true"></i>-->
+                          </td>
+                      
+                    </tbody>
+                
+                  </table>
+              
+                  </div>
+                  <div class="d-flex justify-content-between p-2">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    <!-- <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)" [pageSize]="pageSize"
+                      [collectionSize]="collectionSize">
+                    </ngb-pagination> -->
+                    <select class="custom-select" style="width: auto" name="pageSize"
+                      (change)="handlePageSizeChange($event)">
+                      <option *ngFor="let size of pageSizes" [value]="size">
+                        {{ size }}
+                      </option>
+                    </select>
+                  </div>
+                
+              </div>
+              <!-- </app-card> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

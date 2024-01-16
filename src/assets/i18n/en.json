@@ -1,0 +1,308 @@
+{
+  "APP": "App",
+  "DASHBOARD": "Dashboard",
+  "ACCOUNTING_PLAN": "Accounting plans",
+  "COMPANY": "Companies",
+  "TAX": "Taxes",
+  "FOLDERS": "Folders",
+  "EMPLOYEES": "Employees",
+  "TRANSACTIONS": "Transactions",
+  "PRODUCTS_SERVICES": "Products/Services",
+  "SUPPLIERS": "Suppliers",
+  "CUSTOMERS": "Customers",
+  "NEW": "New",
+  "ACTIONS": "Actions",
+  "EXPENSES_SALES": "Expenses/Sales",
+
+  "ACCOUNTING_PLAN_COMPONENT": {
+    "TITLE": "Accounting plans page",
+    "HEADER": "Accounting plans list",
+    "IMPORT": "Import",
+    "EXPORT": "Export",
+    "NEW_PLAN": "New plan",
+    "DELETE": "Delete",
+    "NEW_ROW": "New row",
+    "TABLE": {
+      "ACCOUNT_NUMBER": "Account number",
+      "DESCRIPTION": "Description"
+    },
+    "SELECT": {
+      "SELECT_FILE": "Select a file"
+    },
+    "POPUP": {
+      "ACCOUNTNUMBER": "Account number",
+      "ENTER_ACCOUNTNUMBER": "Enter account number",
+      "ENTER_DESCRIPTION": "Enter description !",
+      "ACCOUNTPLANNAME": "Accounting plan name",
+      "ENTER_ACCOUNTPLANNAME": "Enter accounting plan name !"
+    }
+  },
+  "COMPANY_COMPONENT": {
+    "TITLE": "Companies page",
+    "HEADER": "Companies list",
+    "TABLE": {
+      "NAME": "Name",
+      "DOMAIN": "Domain"
+    },
+    "POPUP": {
+      "NAME": "Name",
+      "ENTER_NAME": "Enter name !",
+      "DOMAIN": "Domain",
+      "ENTER_DOMAIN": "Enter Domain !"
+    }
+  },
+  "EMPLOYEES_COMPONENT": {
+    "TITLE": "Employees page",
+    "HEADER": "Employees list",
+    "TABLE": {
+      "FULLNAME": "Full name",
+      "SALARY": "Salary",
+      "HIRE_DATE": "Hire date"
+    },
+    "POPUP": {
+      "FULLNAME": "Full name",
+      "ENTER_FULLNAME": "Enter full name !",
+      "EMAIL": "Email",
+      "ENTER_EMAIL": "Enter email !",
+      "ADDRESS": "Address",
+      "ENTER_ADDRESS": "Enter address !",
+      "PHONE": "Phone",
+      "ENTER_PHONE": "Enter phone !",
+      "SALARY": "Salary",
+      "ENTER_SALARY": "Enter salary !",
+      "BIRTHDATE": "Birth date",
+      "ENTER_BIRTHDATE": "Enter birth date !",
+      "HIREDATE": "Hire date",
+      "ENTER_HIREDATE": "Enter hire date !",
+      "FEMALE": "Female",
+      "MALE": "Male"
+    }
+  },
+
+  "TAX_COMPONENT": {
+    "TITLE": "Taxes page",
+    "HEADER": "Taxes list",
+    "TABLE": {
+      "NAME": "Wording",
+      "AGENCY_NAME": "Agency name",
+      "START_PERIOD": "Start period"
+    },
+    "POPUP": {
+      "NAME": "Wording",
+      "ENTER_NAME": "Enter wording !",
+      "ENTER_DESCRIPTION": "Enter description !",
+      "AGENCYNAME": "Agency name",
+      "ENTER_AGENCYNAME": "Enter Agency name !",
+      "BUSINESS": "Business Number",
+      "ENTER_BUSINESS": "Enter Business Number !",
+      "STARTPERIOD": "Start period",
+      "ENTER_STARTPERIOD": "Enter start period !",
+      "FILLINGFREQ": "Filling frequency",
+      "ENTER_FILLINGFREQ": "Enter filling frequency !",
+      "COLLECTION_TYPE": "Collection type",
+      "ENTER_COLLECTIONTYPE": "Enter collection type !"
+    }
+  },
+
+  "TRANSACTIONS_COMPONENT": {
+    "TITLE": "Transactions page",
+    "HEADER": "Transactions list",
+    "SELECT": {
+      "PURCHASES": "Purchases",
+      "SALES": "Sales"
+    },
+    "TABLE": {
+      "PRODUCT": "Product name",
+      "SUPPLIER": "Supplier name",
+      "COMPANY": "Company name",
+      "SERVICE": "Service",
+      "EXPLORE": "Explore"
+    }
+  },
+
+  "PRODUCTS_SERVICES_COMPONENT": {
+    "TITLE": "Products And Services Page",
+    "PRODUCTS": {
+      "HEADER": "Products list",
+
+      "TABLE": {
+        "NAME": "Product wording",
+        "REF": "Product reference",
+        "SUPPLIER_NAME": "Supplier name"
+      },
+      "POPUP": {
+        "NAME": "Product wording",
+        "ENTER_NAME":"Enter wording !",
+        "REF": "Product reference",
+        "ENTER_REF":"Enter reference !",
+        "QUANTITY": "Product quantity",
+        "ENTER_QUANTITY":"Enter quantity !",
+        "TAX": "Product tax (%)",
+        "ENTER_TAX":"Enter tax (%) !",
+        "PRICE": "Product price",
+        "ENTER_PRICE":"Enter price !",
+        "ENTER_DESCRIPTION":"Enter description !",
+        "SUPPLIER":"Select a supplier ",
+        "ENTER_SUPPLIER":"Select a supplier !",
+        "ACCOUNTNUMBER": "Select an account number",
+        "ENTER_ACCOUNTNUMBER":"Select an account number !"
+      }
+    },
+    "SERVICES": {
+      "HEADER": "Services list",
+
+      "TABLE": {
+        "NAME": "Service name",
+        "REF": "Service reference",
+        "SUPPLIER_NAME": "Supplier name"
+      },"POPUP": {
+        "NAME": "Service wording",
+        "ENTER_NAME":"Enter wording !",
+        "REF": "Service reference",
+        "ENTER_REF":"Enter reference !",
+        "TAX": "Service tax (%)",
+        "ENTER_TAX":"Enter tax (%) !",
+        "PRICE": "Service price",
+        "ENTER_PRICE":"Enter price !",
+        "ENTER_DESCRIPTION":"Enter description !",
+        "SUPPLIER":"Select a supplier ",
+        "ENTER_SUPPLIER":"Select a supplier !",
+        "ACCOUNTNUMBER": "Select an account number",
+        "ENTER_ACCOUNTNUMBER":"Select an account number !"
+      }
+    }
+  },
+
+  "SUPPLIERS_COMPONENT": {
+    "TITLE": "Suppliers page",
+    "HEADER": "Suppliers list",
+
+    "TABLE": {
+      "NAME": "Wording",
+      "EMAIL": "Email",
+      "ADDRESS": "Address"
+    },
+    "POPUP": {
+      "NAME": "Wording",
+      "ENTER_NAME": "Enter wording !",
+      "EMAIL": "Email",
+      "ENTER_EMAIL": "Enter email !",
+      "ADDRESS": "Address",
+      "ENTER_ADDRESS": "Enter address !"
+    }
+  },
+  "CUSTOMERS_COMPONENT": {
+    "TITLE": "Customers page",
+    "HEADER": "Customers list",
+
+    "TABLE": {
+      "FULLNAME": "Full name",
+      "PAYMENT_METHOD": "Payment method",
+      "COMPANY": "Company name"
+    },
+    "POPUP": {
+      "FULLNAME": "Full name",
+      "ENTER_FULLNAME": "Enter full name !",
+      "EMAIL": "Email",
+      "ENTER_EMAIL": "Enter email !",
+      "ADDRESS": "Address",
+      "ENTER_ADDRESS": "Enter address !",
+      "PHONE": "Phone",
+      "ENTER_PHONE": "Enter phone !",
+      "COMPANY": "Company name",
+      "ENTER_COMPANY": "Enter company name !",
+      "CARD": "Credit card",
+      "CHECK": "Bank check",
+      "CASH": "Cash payment",
+      "PAYMENT_METHOD": "Select payment method"
+    }
+  },
+
+  "TABSET": {
+    "PRODUCTS": "Products",
+    "SERVICES": "Services"
+  },
+
+  "DETAILS": {
+    "FULLNAME": "Full name",
+    "EMAIL": "Email",
+    "ADDRESS": "Address",
+    "COMPANY": "Company name",
+    "COMPANY_DOMAIN": "Company domain",
+    "PAYMENT_METHOD": "Payment method",
+    "PHONE": "Phone",
+    "SALARY": "Salary",
+    "BIRTH_DATE": "Birthdate",
+    "HIRE_DATE": "Hire date",
+    "DESCRIPTION": "Description",
+    "AGENCY_NAME": "Agency name",
+    "FILLING_FREQ": "Filling frequency",
+    "COLLECTION_TYPE": "Collection type",
+    "BUSINESS": "Business Number",
+
+    "PRODUCT_NAME": "Product name",
+    "PRODUCT_REF": "Product reference",
+    "SUPPLIER_NAME": "Supplier name",
+    "PRODUCT_QUANTITY": "Product quantity",
+    "PRODUCT_PRICE": "Product price",
+    "PRODUCT_TAX": "Product tax",
+    "PRODUCT_COST": "Product cost",
+    "PRODUCT_DESCRIPTION": "Description",
+    "SUPPLIER_INFO": "Supplier info",
+
+    "ACCOUNTING_PLAN_REF": "Accounting plan reference",
+
+    "SERVICE_NAME": "Service name",
+    "SERVICE_REF": "Service reference",
+    "SERVICE_PRICE": "Service price",
+    "SERVICE_TAX": "Service tax",
+    "SERVICE_COST": "Service cost",
+    "SERVICE_DESCRIPTION": "Description"
+  },
+  "EMPLOYEE_DETAILS": "Employee info",
+
+  "CUSTOMER_DETAILS": "Customer info",
+  "SERVICE_DETAILS": "Service details",
+  "PRODUCT_DETAILS": "Product details",
+  "TRANSACTION_DETAILS": "Transaction details",
+  "TAX_DETAILS": "Tax details",
+
+  "DASHBOARD_COMPONENT": {
+    "PURCHASES": "Purchases",
+    "SALES": "Sales",
+    "COMPANY_STATE": "SALES % PURCHASES"
+  },
+
+  "USER": {
+    "LOGOUT": "Logout"
+  },
+
+  "NEW_ACCOUNTING_PLAN": "New accounting plan",
+  "NEW_ACCOUNTING_PLAN_ROW": "New row in selected accounting plan",
+  "UPDATE_ACCOUNTING_PLAN": "Update accounting plan",
+  "UPDATE_ACCOUNTING_PLAN_ROW": "Update row in selected accounting plan",
+
+  "NEW_TAX": "NEW TAX",
+  "UPDATE_TAX": "Update tax",
+  "CONFIRM": "Confirm",
+  "CANCEL": "Cancel",
+  "UPDATE_EMPLOYEE":"Update employee",
+  "NEW_EMPLOYEE":"New employee",
+  "NEW_CUSTOMER":"New customer",
+  "UPDATE_CUSTOMER":"Update customer",
+  "NEW_SUPPLIER":"New supplier",
+  "UPDATE_SUPPLIER":"Update supplier",
+
+  "NEW_PRODUCT_PURCHASE": "New product (to purchase)",
+  "UPDATE_PRODUCT_PURCHASE": "Update product (purchases)",
+  "NEW_PRODUCT_SALE": "New product (to sale)",
+  "UPDATE_PRODUCT_SALE": "Update product (sales)",
+
+  "NEW_SERVICE_PURCHASE": "New serivce (to purchase)",
+  "UPDATE_SERVICE_PURCHASE": "Update service (purchases)",
+  "NEW_SERVICE_SALE": "New serivce (to sale)",
+  "UPDATE_SERVICE_SALE": "Update service (sales)",
+  "NEW_COMPANY":"New company",
+  "UPDATE_COMPANY":"Update company"
+
+}

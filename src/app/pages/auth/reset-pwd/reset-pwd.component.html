@@ -1,0 +1,105 @@
+<app-navbar></app-navbar>
+<!-- Section: Design Block -->
+
+<section class="text-center">
+  <!-- Background image -->
+  <div class="p-5 bg-image" style="
+        background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+        height: 125px;
+        background: #B39188; 
+        "></div>
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -100px;
+        background: #E8D5CC; 
+        backdrop-filter: blur(30px);
+        ">
+    <div class="card-body py-5 px-md-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Reset Your Password</h2>
+          <div *ngIf="!verifiedEmail" class="row d-flex justify-content-center">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline mb-4">
+                <input type="email" name="email" ngModel #email="ngModel" placeholder="Email address"
+                  class="form-control" required />
+                <div *ngIf="email.invalid && email.touched" class="alert alert-danger p-2" role="alert">
+                  Enter Email Address
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="form-outline">
+                <!-- Submit button -->
+                <button type="button" (click)="this.verifyEmailAndSendCode(email.value)"
+                  [disabled]="email.invalid&&!verifiedEmail" class="btn btn-primary btn-block mb-4" id="btnSendCode">
+                  Send Code
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="this.verifiedEmail&&!this.verifiedCode" class="row d-flex justify-content-center">
+            <!-- <ng-container> -->
+            <div class="col-md-6 mb-4">
+              <div class="form-outline mb-4">
+                <input type="text" name="verifCode" ngModel #verifCode="ngModel" placeholder="Verification Code"
+                  class="form-control" required />
+                <div *ngIf="verifCode.invalid && verifCode.touched" class="alert alert-danger p-2" role="alert">
+                  Enter Verification Code
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="form-outline">
+                <!-- Submit button -->
+                <button type="button" (click)="this.verifyCode(verifCode.value)"
+                  [disabled]="verifCode.invalid&&!this.verifiedCode" class="btn btn-primary btn-block mb-4"
+                  id="btnConfirm">
+                  Confirm
+                </button>
+              </div>
+            </div>
+
+            <!-- </ng-container> -->
+          </div>
+          <form name="form" #freset="ngForm" (ngSubmit)="resetPassword(freset)" novalidate>
+            <div *ngIf="this.verifiedCode" class="row d-flex justify-content-center">
+              <div class="col-md-5 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="password" name="newPassword" ngModel #newPassword="ngModel"
+                    placeholder="Your new password" class="form-control" required />
+                  <div *ngIf="newPassword.invalid && newPassword.touched" class="alert alert-danger p-2" role="alert">
+                    <span class="text-light">Enter New Password</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="password" name="confirmNewPwd" ngModel #confirmNewPwd="ngModel"
+                    placeholder="Confirm your new password" class="form-control" required />
+                  <div *ngIf="
+                    (confirmNewPwd.invalid && confirmNewPwd.touched) ||
+                    (newPassword.value != confirmNewPwd.value && confirmNewPwd.valid)
+                  " class="alert alert-danger p-2" role="alert">
+                    Password does not match
+                  </div>
+                </div>
+              </div>
+              <div class="form-outline">
+                <button type="submit" [disabled]="freset.invalid||(newPassword.value!=confirmNewPwd.value)"
+                  class="btn btn-primary btn-block col-md-10 mb-4" id="btnValidate">
+                  <span class="text-light">Validate</span>
+                </button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->

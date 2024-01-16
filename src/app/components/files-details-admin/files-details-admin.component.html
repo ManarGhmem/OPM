@@ -1,0 +1,113 @@
+<ng-container>
+  <div class="page-header card" id="myheader">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="page-header-title">
+          <span><i class="fas fa-solid  fa-files-o" style="background-color: #000080"></i></span>
+          <div class="d-inline">
+            <span class="d-block text-primary">
+              <h4>Files</h4>
+            </span>
+            <!-- <span class="text-dark">Tax Page</span> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Page-header end -->
+
+  <div class="row">
+
+    <div class="col-lg-12">
+      <div class="md-tabs">
+        <div class="m-t-15">
+          <div class="card">
+            <div class="col-sm-12">
+              <div class="card-header">
+                <h5 class="card-header-text">Files list</h5>
+                <div class="col-md-12 col-lg-3 offset-lg-10">
+                  <div class="pcoded-search">
+                    <div class="pcoded-search-box">
+                      <!-- <button class="btn " (click)="OpenModal('NEW_TAX')">
+                        <i class="icofont icofont-ui-add"></i>
+                        NEW
+                      </button> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <!-- <div class="col-sm-4 mb-5 mr-2">
+                    <select class="form-select" value="-1" (change)="changeSelectedFile($event.target.value)">
+                      <option value="-1" disabled>
+                        Select Option
+                      </option>
+                      <option value="true" > Active Account </option>
+                      <option value="false"> Inactive Account</option>
+                    </select>
+                  </div> -->
+
+
+                  <div class="col-sm-1 mb-5 mr-2 ml-4" *ngIf="this.upload">
+                    <button class="btn" (click)="OpenModal('NEW_ACCOUNTING_PLAN_ROW')">
+                      <i class="fas fa-plus-square"></i>
+                      {{'ACCOUNTING_PLAN_COMPONENT.NEW_ROW'|translate}}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr style="text-align: center">
+                        <th scope="col">
+                          Company name
+                        </th>
+                        <th scope="col">
+                          Folders name
+                        </th>
+
+                        <th scope="col">ACTIONS</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let files of this.filesListe|slice">
+                      <tr style="text-align: center">
+                        <td scope="row">{{
+                          files.fileName
+                          }} </td>
+
+                          <td scope="row"> {{
+                            files.uploadDate
+                            }} </td>
+
+
+                          <td scope="row">
+                              <i (click)="openFile(files.path)" class="fa fa-eye ml-2"></i>                           <!-- <i class="fa fa-check" aria-hidden="true"></i>-->
+                          </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="d-flex justify-content-between p-2">
+                    <!-- <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)" [pageSize]="pageSize"
+                      [collectionSize]="collectionSize">
+                    </ngb-pagination> -->
+                    <select class="custom-select" style="width: auto" name="pageSize"
+                      (change)="handlePageSizeChange($event)">
+                      <!-- <option *ngFor="let size of pageSizes" [ngValue]="size">
+                        {{ size }}
+                      </option> -->
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- </app-card> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

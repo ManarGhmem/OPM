@@ -1,0 +1,146 @@
+<ng-container>
+  <div class="page-header card" id="myheader">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="page-header-title">
+          <span><i class="fas fas fa-hospital-o" style="background-color: #B39188"></i></span>
+          <div class="d-inline">
+            <span class="d-block text-primary">
+              <br>
+                <h4>Contrat</h4>
+              </span>
+              <!-- <span class="text-dark">Tax Page</span> -->
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+    <!-- Page-header end -->
+  
+    <div class="row">
+  
+      <div class="col-lg-12">
+        <div class="md-tabs">
+          <div class="m-t-15">
+            <div class="card">
+              <div class="col-sm-12">
+                <div class="card-header">
+                  <br>
+                  <h3 class="card-header-text">Contrat List</h3>
+                  <div class="col-md-12 col-lg-3 offset-lg-10">
+                    <div class="pcoded-search">
+                      <div class="pcoded-search-box">
+                        <!-- <a *ngIf="this.userRole == 'client'" (click)="OpenModal('New part order')"> <button class="btn ">
+                            <i class="icofont icofont-ui-add"></i>
+                            NEW
+                          </button></a> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <!-- <div class="col-sm-4 mb-5 mr-2">
+                      <select class="form-select" value="-1" (change)="changeSelectedFile($event.target.value)">
+                        <option value="-1" disabled>
+                          Select Option
+                        </option>
+                  
+                        <option value="All"> All </option>
+                        <option value="In progress"> In progress </option>
+                        <option value="Valid">Valid</option>
+                        <option value="Accepted"> Accepted</option>
+                        <option value="Refused"> Refused</option>
+                        <option value="Done"> Done</option>
+                       
+                      </select>
+                    </div> -->
+                    <div class="col-sm-6 mb-5 mr-10">
+                      <input type="text" [(ngModel)]="term">
+                    </div>
+                  </div>
+                </div>
+                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true">
+                  <div >
+                    <table class="table table-striped mb-0"  style="background-color: #e8d5cc;" >
+                      <thead style="background-color: #B39188;text-align:center">
+                        <tr>
+                            <th scope="col">Terms</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">SLA</th>
+                            <th scope="col">Commerciale</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                      <tbody
+                        *ngFor="let item of this.partOrderList | paginate: { itemsPerPage: nbrItemPage, currentPage: p }|filter:term ">
+                        <tr style="text-align: center">
+                          <td scope="row">{{
+                            item.terms
+                            }} </td>
+  
+                          <td scope="row"> {{
+                            item.startDate|date:'dd/MM/yyyy HH:MM'
+                            
+                            }} </td>
+                            <td scope="row"> {{
+                                item.endDate|date:'dd/MM/yyyy HH:MM'
+                                
+                                }} </td>
+                          <td scope="row"> {{
+                            item.type
+                         
+                            }} </td>
+                                <td scope="row"> {{
+                                    item.sla
+                                    }} </td>
+                                    <td scope="row"> 
+                                      <span *ngIf="item.employeeId">{{item.employeeId.firstName +" "+item.employeeId.lastName}}</span>
+                                      <span *ngIf="!item.employeeId">No</span>
+ </td>
+  
+                          <!-- <td scope="row"> {{
+                                    item.employeeId.firstName+ " "+item.employeeId.lastName
+                                    }} </td> -->
+                          <!--  -->
+                          <td scope="row">
+                            <!-- <a  -->
+                            <i (click)="OpenModalUp('Assigns a Commercial to part order',item)"  class="fas fa-edit"></i>
+                     
+                         
+                          </td>
+  
+  
+  
+  
+                      </tbody>
+                    </table>
+  
+                    <div class="d-flex justify-content-between p-2">
+                      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                      <!-- <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)" [pageSize]="pageSize"
+                          [collectionSize]="collectionSize">
+                        </ngb-pagination> -->
+                      <select class="custom-select" style="width: auto" name="pageSize"
+                        (change)="handlePageSizeChange($event)">
+                        <option *ngFor="let size of pageSizes" [value]="size">
+                          {{ size }}
+                        </option>
+                      </select>
+                    </div>
+                    <!-- <div class="d-flex justify-content-between p-2">
+                        
+                      </div> -->
+                  </div>
+                </div>
+                <!-- </app-card> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>

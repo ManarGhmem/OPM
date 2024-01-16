@@ -1,0 +1,36 @@
+#btnlogin:hover{
+    background-color: #7bb6ad;
+    
+}
+
+#resetlink:hover{
+    color: #0200DB;
+}
+
+// Begin google button style 
+
+
+.btn {
+    border-radius: 2px;
+    // text-transform: capitalize;
+    font-size: 15px;
+    background-color: #207B6E;
+    padding: 10px 19px;
+    cursor: pointer
+}
+
+.btn-google {
+    margin-top: 10px;
+    color: #545454;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 1px #ddd;
+    margin-bottom: 50px;
+}
+
+.btn-google:hover{
+    background-color: #96cfc7;
+}
+#google_logo{
+    margin-right: 10px;
+    margin-bottom: 2px;
+}

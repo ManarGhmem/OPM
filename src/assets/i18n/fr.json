@@ -1,0 +1,298 @@
+{
+  "APP": "App",
+  "DASHBOARD": "Tableau de bord",
+  "ACCOUNTING_PLAN": "Plans comptables",
+  "COMPANY": "Entreprises",
+  "TAX": "Impôts",
+  "EMPLOYEES": "Employés",
+  "TRANSACTIONS": "Transactions",
+  "PRODUCTS_SERVICES": "Produits/Services",
+  "SUPPLIERS": "Fournisseurs",
+  "CUSTOMERS": "Clients",
+  "NEW": "Nouveau",
+  "ACTIONS": "Actions",
+  "EXPENSES_SALES": "Dépenses/Ventes",
+  "ACCOUNTING_PLAN_COMPONENT": {
+    "TITLE": "La page des plans comptables",
+    "HEADER": "La liste des plans comptables",
+    "IMPORT": "Importer",
+    "EXPORT": "Exporter",
+    "NEW_PLAN": "Nouveau plan",
+    "DELETE": "Supprimer",
+    "NEW_ROW": "Nouvelle ligne",
+    "TABLE": {
+      "ACCOUNT_NUMBER": "N° de compte",
+      "DESCRIPTION": "Description"
+    },
+    "SELECT": {
+      "SELECT_FILE": "Séléctionner un fichier"
+    },
+    "POPUP": {
+      "ACCOUNTNUMBER": "N° de compte",
+      "ENTER_ACCOUNTNUMBER": "Saisir le N° de compte",
+      "ENTER_DESCRIPTION": "Saisir la description !",
+      "ACCOUNTPLANNAME": "Nom plan comptable",
+      "ENTER_ACCOUNTPLANNAME": "Saisir le nom du plan comptable !"
+    }
+  },
+
+  "COMPANY_COMPONENT": {
+    "TITLE": "La page des entreprises",
+    "HEADER": "La liste des entreprises",
+    "TABLE": {
+      "NAME": "Nom",
+      "DOMAIN": "Domaine"
+    },
+    "POPUP": {
+      "NAME": "Nom",
+      "ENTER_NAME": "Saisir le nom !",
+      "DOMAIN": "Domaine",
+      "ENTER_DOMAIN": "Saisir le domaine !"
+    }
+  },
+  "TAX_COMPONENT": {
+    "TITLE": "La page des impôts",
+    "HEADER": "La liste des impôts",
+    "TABLE": {
+      "NAME": "Libellé",
+      "AGENCY_NAME": "Nom de l'agence",
+      "START_PERIOD": "Période de début"
+    },
+    "POPUP": {
+      "NAME": "Libellé",
+      "ENTER_NAME": "Saisir le libellé !",
+      "ENTER_DESCRIPTION": "Saisir la description !",
+      "AGENCYNAME": "Nom de l'agence",
+      "ENTER_AGENCYNAME": "Saisir le nom de l'agence !",
+      "BUSINESS": "N° d'affaire",
+      "ENTER_BUSINESS": "Saisir le N° d'affaire !",
+      "STARTPERIOD": "Période de début",
+      "ENTER_STARTPERIOD": "Saisir la période de début !",
+      "FILLINGFREQ": "Fréquence de remplissage",
+      "ENTER_FILLINGFREQ": "Saisir la fréquence de remplissage !",
+      "COLLECTION_TYPE": "Type de collecte",
+      "ENTER_COLLECTIONTYPE": "Saisir le type de collection type !"
+    }
+  },
+  "EMPLOYEES_COMPONENT": {
+    "TITLE": "La page des employés",
+    "HEADER": "La liste des employés",
+    "TABLE": {
+      "FULLNAME": "Nom complet",
+      "SALARY": "Salaire",
+      "HIRE_DATE": "Date d'embauche"
+    },
+    "POPUP": {
+      "FULLNAME": "Nom complet",
+      "ENTER_FULLNAME": "Saisir le nom complet !",
+      "EMAIL": "Email",
+      "ENTER_EMAIL": "Saisir l'email !",
+      "ADDRESS": "Adresse",
+      "ENTER_ADDRESS": "Saisir l'adresse !",
+      "PHONE": "N° tél",
+      "ENTER_PHONE": "Saisir le N° de téléphone !",
+      "SALARY": "Salaire",
+      "ENTER_SALARY": "Saisir le salaire !",
+      "BIRTHDATE": "Date de naissance",
+      "ENTER_BIRTHDATE": "Saisir la date de naissance !",
+      "HIREDATE": "Date d'embauche",
+      "ENTER_HIREDATE": "Saisir la date d'embauche !",
+      "FEMALE": "Femme",
+      "MALE": "Homme"
+    }
+  },
+  "TRANSACTIONS_COMPONENT": {
+    "TITLE": "La page des transactions",
+    "HEADER": "La liste des transactions",
+    "SELECT": {
+      "PURCHASES": "Achats",
+      "SALES": "Ventes"
+    },
+    "TABLE": {
+      "PRODUCT": "Nom produit",
+      "SUPPLIER": "Nom fournisseur",
+      "COMPANY": "Nom entreprise",
+      "SERVICE": "Service",
+      "EXPLORE": "Explorer"
+    }
+  },
+  "PRODUCTS_SERVICES_COMPONENT": {
+    "TITLE": "La page des produits et des services",
+    "PRODUCTS": {
+      "HEADER": "La liste des produits",
+      "TABLE": {
+        "NAME": "Libellé produit",
+        "REF": "Référence produit",
+        "SUPPLIER_NAME": "Nom fournisseur"
+      },
+      "POPUP": {
+        "NAME": "Libellé produit",
+        "ENTER_NAME": "Saisir le libellé !",
+        "REF": "Référence produit",
+        "ENTER_REF": "Saisir la référence !",
+        "QUANTITY": "Quantité produit",
+        "ENTER_QUANTITY": "Saisir la quantité !",
+        "TAX": "Tax produit en (%)",
+        "ENTER_TAX": "Saisir la taxe !",
+        "PRICE": "Prix produit",
+        "ENTER_PRICE": "Saisir le prix !",
+        "ENTER_DESCRIPTION": "Saisir la description !",
+        "SUPPLIER": "Séléctionner un fournisseur",
+        "ENTER_SUPPLIER": "Séléctionner un fournisseur !",
+        "ACCOUNTNUMBER": "Séléctionner un numéro de compte",
+        "ENTER_ACCOUNTNUMBER": "Séléctionner un numéro de compte !"
+      }
+    },
+    "SERVICES": {
+      "HEADER": "La liste des services",
+
+      "TABLE": {
+        "NAME": "Nom service ",
+        "REF": "Référence service",
+        "SUPPLIER_NAME": "Nom fournisseur"
+      },
+      "POPUP": {
+        "NAME": "Libellé service",
+        "ENTER_NAME": "Saisir le libellé !",
+        "REF": "Référence service",
+        "ENTER_REF": "Saisir la référence !",
+        "TAX": "Tax service en (%)",
+        "ENTER_TAX": "Saisir la taxe en (%) !",
+        "PRICE": "Prix service",
+        "ENTER_PRICE": "Saisir le prix !",
+        "ENTER_DESCRIPTION": "Saisir la description !",
+        "SUPPLIER": "Séléctionner un fournisseur",
+        "ENTER_SUPPLIER": "Séléctionner un fournisseur !",
+        "ACCOUNTNUMBER": "Séléctionner un numéro de compte",
+        "ENTER_ACCOUNTNUMBER": "Séléctionner un numéro de compte !"
+      }
+    }
+  },
+
+  "SUPPLIERS_COMPONENT": {
+    "TITLE": "La page des fournisseurs",
+    "HEADER": "La liste des fournisseurs",
+
+    "TABLE": {
+      "NAME": "Libellé",
+      "EMAIL": "Email",
+      "ADDRESS": "Adresse"
+    },
+    "POPUP": {
+      "NAME": "Libellé",
+      "ENTER_NAME": "Saisir le libellé !",
+      "EMAIL": "Email",
+      "ENTER_EMAIL": "Saisir l'email !",
+      "ADDRESS": "Adresse",
+      "ENTER_ADDRESS": "Saisir l'adresse !"
+    }
+  },
+  "CUSTOMERS_COMPONENT": {
+    "TITLE": "La page des clients",
+    "HEADER": "La liste des clients",
+
+    "TABLE": {
+      "FULLNAME": "Nom complet",
+      "PAYMENT_METHOD": "Mode de paiement",
+      "COMPANY": "Nom de l'entreprise"
+    },
+    "POPUP": {
+      "FULLNAME": "Nom complet",
+      "ENTER_FULLNAME": "Saisir le nom complet !",
+      "EMAIL": "Email",
+      "ENTER_EMAIL": "Saisir l'email !",
+      "ADDRESS": "Adresse",
+      "ENTER_ADDRESS": "Saisir l'adresse !",
+      "PHONE": "N° tél",
+      "ENTER_PHONE": "Saisir le N° de téléphone !",
+      "COMPANY": "Nom de l'entreprise",
+      "ENTER_COMPANY": "Saisir le nom de 'entreprise !",
+      "CARD": "Carte de crédit",
+      "CHECK": "Chèque bancaire",
+      "CASH": "Paiement en espèces",
+      "PAYMENT_METHOD": "Séléctionner le mode de paiement"
+    }
+  },
+
+  "TABSET": {
+    "PRODUCTS": "Produits",
+    "SERVICES": "Services"
+  },
+
+  "DETAILS": {
+    "FULLNAME": "Nom complet",
+    "EMAIL": "Email",
+    "ADDRESS": "Adresse",
+    "COMPANY": "Nom de l'entreprise",
+    "COMPANY_DOMAIN": "Domaine de l'entreprise",
+    "PAYMENT_METHOD": "Mode de paiement",
+    "PHONE": "N° tél",
+    "SALARY": "Salaire",
+    "BIRTH_DATE": "Date de naissance",
+    "HIRE_DATE": "Date d'embauche",
+    "DESCRIPTION": "Description",
+    "AGENCY_NAME": "Nom de l'agence",
+    "FILLING_FREQ": "Fréquence de remplissage",
+    "COLLECTION_TYPE": "Type de collecte",
+    "BUSINESS": "N° d'affaire",
+    "PRODUCT_NAME": "Nom produit",
+    "PRODUCT_REF": "Référence produit",
+    "SUPPLIER_NAME": "Nom fournisseur",
+    "PRODUCT_QUANTITY": "Quantité produit",
+    "PRODUCT_PRICE": "Prix produit",
+    "PRODUCT_TAX": "impôts produit",
+    "PRODUCT_COST": "Coût produit",
+    "PRODUCT_DESCRIPTION": "Description",
+    "SUPPLIER_INFO": "Info fournisseur",
+
+    "ACCOUNTING_PLAN_REF": "Référence plan comptable",
+
+    "SERVICE_NAME": "Nom service",
+    "SERVICE_REF": "Référence service",
+    "SERVICE_PRICE": "Prix service",
+    "SERVICE_TAX": "Impôts service",
+    "SERVICE_COST": "Coût service",
+    "SERVICE_DESCRIPTION": "Description"
+  },
+  "EMPLOYEE_DETAILS": "Info sur l'employé(e)",
+  "CUSTOMER_DETAILS": "Info sur le client(e)",
+  "SERVICE_DETAILS": "Détails service",
+  "PRODUCT_DETAILS": "Détails produit",
+  "TRANSACTION_DETAILS": "Détails de la transaction",
+  "TAX_DETAILS": "Détails de l'impôt",
+  "DASHBOARD_COMPONENT": {
+    "PURCHASES": "Achats",
+    "SALES": "Ventes",
+    "COMPANY_STATE": "VENTES % ACHATS"
+  },
+  "USER": {
+    "LOGOUT": "Déconnexion"
+  },
+  "NEW_ACCOUNTING_PLAN": "Nouveau plan comptable",
+  "NEW_ACCOUNTING_PLAN_ROW": "Nouvelle ligne du plan comptable séléctionné",
+  "UPDATE_ACCOUNTING_PLAN": "Modifier le plan comptable",
+  "UPDATE_ACCOUNTING_PLAN_ROW": "Modifier une ligne du plan comptable séléctionné",
+  "NEW_TAX": "NOUVELLE TAXE",
+  "UPDATE_TAX": "Modifier la taxe",
+  "CONFIRM": "Confirmer",
+  "CANCEL": "Annuler",
+  "UPDATE_EMPLOYEE": "Modifier l'employe(é)",
+  "NEW_EMPLOYEE": "Nouveau employe(é)",
+  "NEW_COMPANY_V2": "Nouvelle entreprise",
+  "NEW_CUSTOMER": "Nouveau client(e)",
+  "UPDATE_CUSTOMER": "Modifier le client(e)",
+  "NEW_SUPPLIER": "Nouveau fournisseur",
+  "UPDATE_SUPPLIER": "Modifier le fournisseur",
+
+  "NEW_PRODUCT_PURCHASE": "Nouveau produit (à acheter)",
+  "UPDATE_PRODUCT_PURCHASE": "Modifier le produit (achats)",
+  "NEW_PRODUCT_SALE": "Nouveau produit (à vendre)",
+  "UPDATE_PRODUCT_SALE": "Modifier le produit (ventes)",
+
+  "NEW_SERVICE_PURCHASE": "Nouveau serivce (à acheter)",
+  "UPDATE_SERVICE_PURCHASE": "Modifier le service (achats)",
+  "NEW_SERVICE_SALE": "Nouveau serivce (à vendre)",
+  "UPDATE_SERVICE_SALE": "Modifier le service (ventes)",
+  "NEW_COMPANY":"Nouvelle entreprise",
+  "UPDATE_COMPANY":"Modifier l'entreprise"
+}

@@ -1,0 +1,174 @@
+<div class="pcoded" [attr.nav-type]="navType" [attr.theme-layout]="themeLayout" [attr.layout-type]="layoutType"
+  [attr.vertical-placement]="verticalPlacement" [attr.vertical-layout]="verticalLayout"
+  [attr.pcoded-device-type]="deviceType" [attr.vertical-nav-type]="verticalNavType"
+  [attr.vertical-effect]="verticalEffect" [attr.vnavigation-view]="vNavigationView" (window:resize)="onResize($event)">
+
+  <div class="pcoded-container navbar-wrapper">
+    <nav class="navbar header-navbar pcoded-header bg-white navbar-light shadow sticky-top p-0"
+      [attr.header-theme]="headerTheme" style="position: fixed ; top: 0;">
+
+      <div class="navbar-wrapper">
+        <div class="navbar-logo" [attr.logo-theme]="logoTheme" style="background-color: #207B6E;">
+          <a class="mobile-menu" id="mobile-collapse" href="javascript:;" (click)="toggleOpened()"
+            [exclude]="'#main_navbar'" (clickOutside)="onClickedOutside($event)">
+            <i class="ti-menu"></i>
+          </a>
+          <a class="navbar-brand d-flex align-items-center px-4 px-md-9 offset-1 ml-2">
+            <img src="assets/images/m.png" width="150" height="140" >
+            <!-- <h3 class="mt-2 text-light"><i class="fa fa-star-o"></i> OPM </h3> -->
+          </a>
+          <a (click)="onMobileMenu()" class="mobile-options">
+            <i class="ti-more"></i>
+          </a>
+        </div>
+        <div class="navbar-container">
+          <div>
+            <ul class="nav-left">
+              <li>
+                <div class="sidebar_toggle">
+                  <a href="javascript:;" (click)="toggleOpened()"><i class="ti-menu f-18"></i></a>
+                </div>
+              </li>
+              <li>
+                <a href="javascript:;" appToggleFullScreen>
+                  <i class="ti-fullscreen"></i>
+                </a>
+              </li>
+            </ul>
+            <ul [@mobileMenuTop]="isCollapsedMobile" class="nav-right" [ngClass]="isCollapsedMobile">
+              <li class="header-notification lng-dropdown">
+                <!-- <a href="javascript:;" id="dropdown-active-item">
+                  <img [src]="selectedLanguage.image" alt=""> {{selectedLanguage.language}}
+                </a> -->
+                <!-- <ul  class="show-notification">
+                  <li *ngFor="let item of langList">
+                    <a href="javascript:;" (click)="selectLanguage(item)" [data-lng]="item.lang">
+                      <img [src]="item.image"> {{item.language}}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:;" data-lng="fr">
+                      <img src="assets/images/flags/FRANCE.jpg" alt=""> French
+                    </a>
+                  </li>
+                </ul> -->
+              </li>
+              <li class="user-profile header-notification">
+                <a>
+                  <!-- <img [src]="userinfo&&userinfo.photo" class="img-radius" alt="User-Profile-Image" /> -->
+                  <img src="../../../assets/images/manar.jpg" >
+                  
+                  <span>{{this.userNAme }}</span>
+                  <i class="ti-angle-down"></i>
+                </a>
+                <ul class="profile-notification show-notification">
+                  <li>
+                    <a [routerLink]="['/updatepage']" (click)="Account()">
+                    <i class="fa fa-user"></i> {{ 'Update Account' | translate }}
+                  </a>
+                  <br>
+                    <a [routerLink]="['/signin']" (click)="logout()">
+                      <i class="ti-layout-sidebar-left"></i> {{'USER.LOGOUT'|translate}}
+                    </a>
+              
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="pcoded-main-container" [style.margin-top]="headerFixedMargin">
+      <div class="pcoded-wrapper">
+        <nav id="main_navbar" class="pcoded-navbar" (clickOutside)="onClickedOutside($event)"
+          [exclude]="'#mobile-collapse'" [attr.pcoded-header-position]="pcodedHeaderPosition"
+          [attr.navbar-theme]="navBarTheme" [attr.active-item-theme]="activeItemTheme" sub-item-theme="theme2"
+          active-item-style="style0" [attr.pcoded-navbar-position]="pcodedSidebarPosition">
+          <div class="sidebar_toggle">
+            <a href="javascript:;"><i class="icon-close icons"></i></a>
+          </div>
+          <div class="pcoded-inner-navbar main-menu" appAccordion>
+            <div class="">
+              <div class="main-menu-header">
+                <!-- <img class="img-40 img-radius" [src]="userinfo&&userinfo.photo" alt="User-Profile-Image" /> -->
+                <div class="user-details">
+                  <span id="more-details" (click)="toggleOpenedSidebar()">
+                    <i *ngIf="this.userRole == 'client'" class="fas fa-solid fa-folder" style="font-size: 20px;">&nbsp; &nbsp; &nbsp; {{ this.folders }}</i><br><br>
+                    <i *ngIf="this.userRole == 'client'" class="fas fa-solid fa-regular fa-file-contract" style="font-size: 20px;">&nbsp; &nbsp; &nbsp;{{this.Contract}}</i>
+                    
+                    
+                    
+                    <i *ngIf="this.companyList&&this.companyList.length>0" class="ti-angle-down"></i></span>
+                </div>
+              </div>
+              <div class="main-menu-content">
+                <ul>
+                  <li *ngFor="let company of companyList" [@mobileMenuTop]="isCollapsedSideBar" class="more-details"
+                    [ngClass]="isCollapsedSideBar">
+
+                    <a>
+                      <i (click)="setSelected(company.id_company)"
+                        [class]="company.selected===1 ?'fa fa-check-square-o':'fa fa-square-o'">
+
+                      </i>
+                      {{company.name}}
+                    </a>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <perfect-scrollbar [style.max-width]="'100%'" [style.max-height]="'calc(100vh - 230px)'" [config]="config">
+              <div *ngFor="let asideItems of menuItems.getAll(this.userRole)" class="d-color">
+                <div class="pcoded-navigatio-lavel" [attr.menu-title-theme]="menuTitleTheme">{{asideItems.label|translate}}</div>
+                <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder"
+                  [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder"
+                  *ngFor="let asideItem of asideItems.main" appAccordionLink group="{{asideItem.state}}">
+                  <li [routerLinkActive]="['active']" *ngIf="asideItem.type === 'link'" appAccordionLink
+                    group="{{asideItem.state}}">
+                    <a [routerLink]="[asideItem.routerLink]" target="{{asideItem.target ? '_blank' : '_self'}}"
+                      appAccordionToggle *ngIf="asideItem.main_state; else mainContent">
+                      <span class="pcoded-micon"><i class="{{ asideItem.icon }}"></i><b>{{ asideItem.short_label
+                          }}</b></span>
+                      <span class="pcoded-mtext">{{  asideItem.name|translate }}</span>
+                      <span *ngFor="let asideBadge of asideItem.badge"
+                        class="pcoded-badge label label-{{ asideBadge.type }}">{{asideBadge.value}}</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                    <ng-template #mainContent>
+                      <a [routerLink]="[asideItem.routerLink]" target="{{asideItem.target ? '_blank' : '_self'}}"
+                        appAccordionToggle>
+                        <span class="pcoded-micon"><i class="{{ asideItem.icon }}"></i><b>{{ asideItem.short_label
+                            }}</b></span>
+                        <span class="pcoded-mtext">{{  asideItem.name|translate }}</span>
+                        <span *ngFor="let asideBadge of asideItem.badge"
+                          class="pcoded-badge label label-{{ asideBadge.type }}">{{asideBadge.value}}</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </ng-template>
+                  </li>
+                </ul>
+              </div>
+            </perfect-scrollbar>
+          </div>
+        </nav>
+        <div class="pcoded-content">
+          <div class="pcoded-inner-content">
+            <div class="main-body">
+              <div class="page-wrapper">
+                <div class="page-body">
+                  <router-outlet>
+                  </router-outlet>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

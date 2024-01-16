@@ -1,0 +1,64 @@
+
+
+<div class="page-header card" id="myheader">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="page-header-title">
+          <span><i class="fas fa-duotone fa-tasks" style="background-color: #000080"></i></span>
+          <div class="d-inline">
+            <span class="d-block text-primary">
+              <h4> Work Order</h4>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="page-header-breadcrumb">
+          <ul class="breadcrumb">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-6 col-xl-6">
+      <div class="card widget-statstic-card">
+        <div class="card-header">
+          <div class="card-header-left">
+            <h5> My Work Order Unhandled </h5>
+            <p class="p-t-10 m-b-0 text-c-yellow"></p>
+          </div>
+        </div>
+        <div class="card-block">
+          <i class="icofont icofont-memorial st-icon bg-c-yellow"></i>
+          <div class="text-left">
+            <h3 class="d-inline-block">{{
+             this.myWorekorderunhndled}}</h3>
+          </div>
+          <div class="text-right">
+            <a [routerLink]="['/app/UnhandledWorkOrdersDetailAdmin',this.id]" class="d-inline-block">More details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-6">
+      <div class="card widget-statstic-card">
+        <div class="card-header">
+          <div class="card-header-left">
+            <h5> All Work Order
+            </h5>
+            <p class="p-t-10 m-b-0 text-c-blue"></p>
+          </div>
+        </div>
+        <div class="card-block">
+          <i class="icofont icofont-ticket st-icon bg-c-blue"></i>
+          <div class="text-left">
+            <h3 class="d-inline-block">{{this.myWorekorder}}</h3>
+          </div>
+          <div class="text-right">
+            <a [routerLink]="['/app/workorderListTechClt']" class="d-inline-block">More details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

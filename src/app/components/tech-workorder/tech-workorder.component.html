@@ -1,0 +1,142 @@
+<ng-container>
+    <div class="page-header card" id="myheader">
+      <div class="row align-items-end">
+        <div class="col-lg-8">
+          <div class="page-header-title">
+            <span><i class="fas fa-solid  fa-tasks" style="background-color: #000080"></i>
+  
+            </span>
+            <div class="d-inline">
+              <span class="d-block text-primary">
+                <h4>Worek Order</h4>
+              </span>
+              <!-- <span class="text-dark">Tax Page</span> -->
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+    <!-- Page-header end -->
+  
+    <div class="row">
+  
+      <div class="col-lg-12">
+        <div class="md-tabs">
+          <div class="m-t-15">
+            <div class="card">
+              <div class="col-sm-12">
+                <div class="card-header">
+                  <h5 class="card-header-text">Worek Order List</h5>
+                  <div class="col-md-12 col-lg-3 offset-lg-10">
+                    <div class="pcoded-search">
+                      <div class="pcoded-search-box">
+                        <a *ngIf="this.userRole == 'client'" [routerLink]="['/app/addWorekorder', this.tech_id]">  <button class="btn ">
+                          <i class="icofont icofont-ui-add"></i>
+                          NEW
+                        </button></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-4 mb-5 mr-2">
+                      <select class="form-select" value="-1" (change)="changeSelectedFile($event.target.value)">
+                        <option value="-1" disabled>
+                          Select Option
+                        </option>
+                        <!--  -->
+                        <option value="All" > All	 </option>
+                        <option value="In progress" > In progress	 </option>
+                        <option value="Done">Done</option>
+                        <option value="Expired"> Expired</option>
+                        <option value="Valid"> Valid</option>
+                        <!--  -->
+                      </select>
+                    </div>
+                    <div class="col-sm-4 mb-5 mr-10">
+                      <input type="text" [(ngModel)]="term">
+                  </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr style="text-align: center">
+                          <th scope="col">
+                            Titre
+                          </th>
+                          <th scope="col">
+                            Creating Date
+                                                  </th>
+                          <th scope="col">
+                            status
+                          </th>
+                          <!-- <th scope="col">
+                            Employee Name
+                          </th> -->
+                          <th scope="col">ACTIONS</th>
+  
+                          <!--   employee Name-->
+  
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let item of this.WorekOrderList | paginate: { itemsPerPage: nbrItemPage, currentPage: p }|filter:term ">
+                        <tr style="text-align: center">
+                          <td scope="row">{{
+                            item.title
+                            }} </td>
+  
+                            <td scope="row"> {{
+                              item.creationDate|date:'dd/MM/yyyy HH:MM'
+                              }} </td>
+                              <td scope="row"> {{
+                                item.status
+                                }} </td>
+  
+                                <!-- <td scope="row"> {{
+                                  item.employeeId.firstName+ " "+item.employeeId.lastName
+                                  }} </td> -->
+                              <!--  -->
+                              <td scope="row">
+                                <!-- <a  -->
+                                  <!-- <a  [routerLink]="['/app/workOrderDetailAddUpdate', this.id,this.update]"><i  class="fas fa-edit"></i></a> -->
+                                  <a  [routerLink]="['/app/updateWorekOrder',item._id]"><i  class="fas fa-edit"></i></a>
+                                  <i (click)="deleteWork(item._id)" class="fa fa-trash-o ml-2"></i>
+                                <a  [routerLink]="['/app/workOrderDetailsAdmin', item._id]"><i  class="fa fa-eye ml-2"></i></a>
+                              </td>
+      
+  
+  
+
+                      </tbody>
+                    </table>
+  
+                    <div class="d-flex justify-content-between p-2">
+                      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                      <!-- <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)" [pageSize]="pageSize"
+                        [collectionSize]="collectionSize">
+                      </ngb-pagination> -->
+                      <select class="custom-select" style="width: auto" name="pageSize"
+                        (change)="handlePageSizeChange($event)">
+                        <option *ngFor="let size of pageSizes" [value]="size">
+                          {{ size }}
+                        </option>
+                      </select>
+                    </div>  
+                    <!-- <div class="d-flex justify-content-between p-2">
+                      
+                    </div> -->
+                  </div>
+                </div>
+                <!-- </app-card> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  

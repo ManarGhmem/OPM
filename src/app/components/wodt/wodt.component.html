@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="md-tabs">
+      <div class="m-t-15">
+        <div class="card">
+          <div class="col-sm-12">
+            <div class="card-header">
+              <h5 class="card-header-text">{{this.titer}}</h5>
+              <div class="col-md-12 col-lg-3 offset-lg-10">
+                <div class="pcoded-search">
+                  <div class="pcoded-search-box">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+                  <ng-container *ngIf="this.authority== 'admin'">
+                    <div class="input-group">
+                      <select class="form-select" value="-1" name="employeeId" ngModel  [(ngModel)]="this.model.employeeId" #employeeId="ngModel" required>
+                        <option value="">select Technician</option>
+                        <option *ngFor="let tech of this.employerslist;" value="{{tech._id}}">
+                          {{tech.firstName+" "+tech.lastName}}
+                        </option>
+                      </select>
+                    </div>
+                    <div *ngIf="this.authority== 'admin' && employeeId.invalid && employeeId.touched"
+                      class="alert alert-danger p-2" role="alert">
+                      <span>Select technician</span>
+                    </div>
+                  </ng-container>
+
+
+
+
+                  <div class="input-group">
+                    <input type="text" class="form-control" [placeholder]="'Title'" name="title" ngModel
+                      [(ngModel)]="this.model.title" #title="ngModel" required />
+                  </div>
+                  <div *ngIf="title.invalid && title.touched" class="alert alert-danger p-2" role="alert">
+                    <span>ENTER Title</span>
+                  </div>
+                  
+                  <div class="input-group">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description"
+                      name="description" ngModel [(ngModel)]="this.model.description" #description="ngModel" rows="2"
+                      name="description" required></textarea>
+                  </div>
+                  <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+                    <span>ENTER Description</span>
+                  </div>
+
+
+
+                  <div class="input-group">
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" [placeholder]="'Part Name'" name="partName" ngModel
+                        [(ngModel)]="this.model.partName" #partName="ngModel" required />
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" [placeholder]="'Serial Number'" name="serialNum" ngModel
+                        [(ngModel)]="this.model.serialNum" #serialNum="ngModel" required />
+                    </div>
+                  </div>
+
+
+                  <div class="input-group">
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control" [placeholder]="'Part Number'" name="partNum" ngModel
+                        [(ngModel)]="this.model.partNum" #partNum="ngModel" required />
+                    </div>
+
+                    <!-- <div class="col-sm-6" >
+                      <div>
+                        <label for="files" class="btn">Files :</label> <i class="fas fa-file-import"></i>
+                        <input class="form-control" [disabled]="this.typeOpertion == 'updateWorekOrder' " (change)="changeSelectedFile02($event)" id="files"
+                          style="visibility:hidden;  border: 1px  #050505;" type="file" />
+                      </div>
+                    </div> -->
+                  </div>
+
+                  <div class="modal-footer">
+                    <input [value]="'CONFIRM'|translate" [disabled]="title.invalid || description.invalid" type="submit"
+                      class="btn btn-outline-primary" />
+                    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+                      {{'CANCEL'|translate}}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="table-responsive">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

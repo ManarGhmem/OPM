@@ -1,0 +1,235 @@
+<ng-container>
+  <div class="page-header card" id="myheader">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="page-header-title">
+          <span><i class="fas fas fa-users" style="background-color: #000080"></i></span>
+          <div class="d-inline">
+            <span class="d-block text-primary">
+              <h4>Work Order Details</h4>
+            </span>
+            <!-- <span class="text-dark">Tax Page</span> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Page-header end -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="md-tabs">
+        <div class="m-t-15">
+          <div class="card">
+            <div class="col-sm-12">
+              <div class="card-header">
+                <h5 class="card-header-text"></h5>
+                <div class="col-md-12 col-lg-3 offset-lg-10">
+                  <div class="pcoded-search">
+                    <div class="pcoded-search-box">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="row" *ngIf="this.workOrder">
+                  <div class="col-md-4">
+                    <div class="row">
+                      <div class="form-group">
+                        <u><i>
+                            <h4>{{this.titleWorkOrder}}</h4>
+                          </i></u>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="row">
+                      <div class="form-group">
+                        <i>
+                          <h4>{{this.StatusWorkOrder}}</h4>
+                        </i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="row">
+                      <div class="form-group">
+                        <u><i>
+                            <h4>{{this.EmpoloyesFirstNameLastName|| ''}}</h4>
+                          </i></u>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="this.workOrder">
+                  <div class="col-md-8">
+                    <div class="row">
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                          [(ngModel)]="this.DescriptioneworkOrder"
+                          [disabled]="this.type_user=='technician' || (this.type_user == 'client') || this.workOrder.status == 'Expired' || this.workOrder.last == false " rows="3"></textarea>
+                          <!-- [disabled]="" -->
+                      </div>
+                    </div>
+                  </div>
+                  <!--   -->
+                  <div class="col-md-4" *ngIf="this.workOrder">
+                    <div class="row">
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea2"></label>
+                        <i *ngIf="this.type_user == 'technician' && this.workOrder.ticketId && this.updatdestech == false && this.workOrder.status == 'In progress'"
+                          (click)="adddescrption(descEmp.value,this.workOrder.ticketId._id)"
+                          class="fas fa-thin fa-file-export"></i>
+                        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<i
+                          *ngIf="this.type_user == 'technician' && this.workOrder.ticketId && this.workOrder.status == 'In progress'"
+                          (click)="upadeteEtaDesTEch()" class="fas fa-edit"></i>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" ngModel #descEmp="ngModel"
+                          [(ngModel)]="this.ticketDescription " [disabled]="updatdestech || this.workOrder.status == 'Expired' || this.workOrder.last == false  " rows="4"
+                          style="width: 90%;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="this.workOrder">
+                  <div class="col-md-9">
+                    <div class="row">
+                      <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Part name </label>
+                        <div class="col-sm-5">
+                          <input type="text" class="form-control"
+                            [disabled]="this.type_user=='technician' || this.type_user=='client' || this.workOrder.status == 'Expired' || this.workOrder.last == false  "
+                            [ngModel]="this.partName" id="inputPassword">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Serial number </label>
+                        <div class="col-sm-5">
+                          <input type="text" class="form-control"
+                            [disabled]="this.type_user=='technician' || this.type_user=='client' || this.workOrder.status == 'Expired' || this.workOrder.last == false  "
+                            [ngModel]="this.serialNum " id="inputPassword">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Part number </label>
+                        <div class="col-sm-5">
+                          <input type="text" class="form-control"
+                            [disabled]="this.type_user=='technician' || this.type_user=='client' || this.workOrder.status == 'Expired' || this.workOrder.last == false "
+                            [ngModel]="this.partName" id="inputPassword">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">LOGs</label>
+                        <div class="col-sm-5">
+                          <input type="text" *ngIf="this.workOrder" class="form-control"
+                            [disabled]="this.type_user=='technician' || this.type_user=='client' || this.workOrder.status == 'Expired' || this.workOrder.last == false  "
+                            [ngModel]="this.logoFileName || '' " id="inputPassword">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="this.type_user != 'client' ||this.type_user == 'technician'">
+                  <div class="col-md-8">
+                    <div class="row">
+                      <ng-container
+                        *ngIf="this.listFile != null && this.type_user == 'technician' || this.type_user != 'client'">
+                        <ul class="list-group" *ngIf="this.listFile">
+                          <li *ngIf="this.workOrder" class="list-group-item active">{{workOrder.ticketId.title}} <span
+                              style="float:right"> <i *ngIf=" this.workOrder.status == 'In progress'"
+                                (click)="OpenModal('Add File Ticket',this.workOrder.ticketId._id)"
+                                class="fas fa-plus-square"></i></span></li>
+                          <ng-container *ngFor="let item of this.listFile">
+                            <!-- <i (click)="OpenDetails('Details Ticket',item)" class="fa fa-eye ml-2"></i> -->
+                            <li class="list-group-item" (click)="openFile(item.path)">
+                              {{item.title}} <span
+                                style="float:right"> <i *ngIf=" this.workOrder.status == 'In progress'"
+                                  (click)="deleteFile(item._id,this.workOrder.ticketId._id)"
+                                  class="fa fa-trash-o ml-2"></i> </span></li>
+                          </ng-container> 
+                        </ul>
+                      </ng-container>
+                      <div
+                        *ngIf="(!this.listFile || !workOrder.ticketId) && (this.type_user != 'client' || this.type_user == 'technician' ) &&  this.workOrder.status == 'In progress'">
+                        <button
+                          *ngIf="(!this.listFile || !workOrder.ticketId) && (this.type_user != 'client' || this.type_user == 'technician' )"
+                          class=" btn-outline-primary"   (click)="oppenAdd('NEW TICKET')">
+                          <i class="icofont icofont-ui-add"></i>
+                          ADD TICKET 
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="this.workOrder.signedBy"class="col-md-3" style="margin-left: 3%;">
+                    <div class="row">
+                      <!-- <img
+                        src="https://www.freepnglogos.com/uploads/signature-png/nguy-ecnh-nguyen-van-binh-signature-png-5.png"
+                        width="90" height="200" /> -->
+                        <h4>Closed By :&ensp;&ensp;{{this.workOrder.signedBy}}</h4> <br>
+                      
+                          <!-- E:/project/OPM-main/OPM-Frontend/src/assets/images/pattern7.jpg -->
+                        </div>
+                      </div>
+                    </div><br><br>
+                    <div class="row" *ngIf="this.type_user == 'client' ">
+                      
+                      <div *ngIf="this.workOrder.signedBy"class="col-md-3" style="margin-left: 3%;">
+                        <div class="row">
+                          <!-- <img
+                            src="https://www.freepnglogos.com/uploads/signature-png/nguy-ecnh-nguyen-van-binh-signature-png-5.png"
+                            width="90" height="200" /> -->
+                        <h4>Closed By :&ensp;&ensp;{{this.workOrder.signedBy}}</h4> <br>
+                      
+                      <!-- E:/project/OPM-main/OPM-Frontend/src/assets/images/pattern7.jpg -->
+                    </div>
+                  </div>
+                </div>
+
+
+                <h1>
+                  <hr>
+                </h1>
+                <ng-container *ngIf="this.type_user == 'technician' &&  this.workOrder.status == 'In progress'">
+                  <div class="row" *ngIf="this.workOrder">
+                    <div class="col-md-9">
+                      <div class="row">
+                        <div class="form-group row">
+                          <label for="inputPassword" class="col-sm-2 col-form-label">Validate : </label>
+                          <div class="col-sm-5">
+                            <div class="input-group">
+                              <button type="button" (click)="updateStaus(this.workOrder._id,'Done','tech')"
+                                class="btn btn-success">Done</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-container
+                  *ngIf=" (this.type_user == 'client' || this.type_user == 'admin') && ( this.workOrder.status == 'Done')">
+                  <div class="row" *ngIf="this.workOrder">
+                    <div class="col-md-9">
+                      <div class="row">
+                        <div class="form-group row">
+                          <label for="inputPassword" class="col-sm-2 col-form-label">Validate : </label>
+                          <div class="col-sm-5">
+                            <div class="input-group">
+                              <button type="button" (click)="updateStaus(this.workOrder._id,'Valid','ad')"
+                                class="btn btn-success">valid</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+              <br><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

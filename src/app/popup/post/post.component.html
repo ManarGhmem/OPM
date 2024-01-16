@@ -1,0 +1,387 @@
+<ng-container>
+
+  <div class="modal-header">
+    <h4 class="modal-title">{{ this.title|translate }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+  <div class="modal-body">
+
+    <ng-container *ngIf="this.type==='WORK_ORDER'">
+      <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+
+        <div class="input-group">
+
+          <select class="form-select" value="-1" name="employeeId" ngModel #employeeId="ngModel" required>
+            <option disabled value="">{{"Select a technician"}}</option>
+            <option *ngFor="let tech of this.listTechnician;" value="{{tech._id}}">
+              {{tech.firstName+" "+tech.lastName}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="employeeId.invalid && employeeId.touched" class="alert alert-danger p-2" role="alert">
+          <span>Select technician</span>
+        </div>
+        <div class="input-group">
+
+          <input type="text" class="form-control" [placeholder]="'Title'" name="title" ngModel #title="ngModel"
+            required />
+        </div>
+        <div *ngIf="title.invalid && title.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Title</span>
+        </div>
+        <div class="input-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="2"
+            name="description" ngModel #description="ngModel" required></textarea>
+
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Description</span>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fadd.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+
+
+
+
+      </form>
+    </ng-container>
+    <ng-container *ngIf="this.type==='newTICKET'">
+      <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+        <div class="input-group">
+
+          <input type="text" class="form-control" [placeholder]="'Title'" name="title" ngModel #title="ngModel"
+            required />
+        </div>
+        <div *ngIf="title.invalid && title.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Title</span>
+        </div>
+        <div class="input-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Listes des tâches" rows="2"
+            name="description" ngModel #description="ngModel" required></textarea>
+
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Description</span>
+        </div>
+        <div>
+          <input class="form-control form-control-lg" (change)="changeSelectedFile02($event)" id="files" type="file"
+            multiple>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fadd.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+
+
+
+
+      </form>
+    </ng-container>
+    <!--  -->
+
+    <ng-container *ngIf="this.type==='newTICKET3'">
+      <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+        <div class="input-group">
+
+          <input type="text" class="form-control" [placeholder]="'Title'" name="title" ngModel #title="ngModel"
+            required />
+        </div>
+        <div *ngIf="title.invalid && title.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Title</span>
+        </div>
+        <div class="input-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Listes des tâches" rows="2"
+            name="description" ngModel #description="ngModel" required></textarea>
+
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Description</span>
+        </div>
+        <div>
+          <input class="form-control form-control-lg" (change)="changeSelectedFile02($event)" id="files" type="file"
+            multiple>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fadd.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+
+
+
+
+      </form>
+    </ng-container>
+
+    <ng-container *ngIf="this.type==='TICKET'">
+      <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+
+        <div>
+          <input class="form-control form-control-lg" (change)="changeSelectedFile02($event)" id="files" type="file"
+            multiple>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fadd.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+
+
+
+
+      </form>
+    </ng-container>
+    <ng-container *ngIf="this.type==='add_Tech'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <select class="form-select" value="-1" name="employeeId" [(ngModel)]="this.payload.employeeId" ngModel
+            #employeeId="ngModel" required>
+            <option disabled value="">{{"Select a technician"}}</option>
+            <option *ngFor="let tech of this.listTechnician;" value="{{tech._id}}">
+              {{tech.firstName+" "+tech.lastName}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="employeeId.invalid && employeeId.touched" class="alert alert-danger p-2" role="alert">
+          <span>Select technician</span>
+        </div>
+
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container>
+    <ng-container *ngIf="this.type==='valide_work_order'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+
+          <input type="text" class="form-control" [placeholder]="'Manager’s name '" name="signedBy" ngModel
+            #signedBy="ngModel" required />
+        </div>
+        <div *ngIf="signedBy.invalid && signedBy.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Manager’s name </span>
+        </div>
+
+        <!-- 
+        <div class="input-group">
+
+          <input type="password" name="password" ngModel  #password="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"   required placeholder="Password" class="form-control" />
+        </div>
+        <div *ngIf="password.invalid   && password.touched" class="alert alert-danger">
+          <div *ngIf="password.errors.required"> Password is required. </div>
+          <div *ngIf="password.errors.pattern"> Must contain at least one number and one uppercase and lowercase letter,
+              and at least 8 or more characters.</div>
+      </div>
+         -->
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container>
+    <ng-container *ngIf="this.type==='valide_followUps'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+
+          <input type="text" class="form-control" [placeholder]="'Manager’s name '" name="signedBy" ngModel
+            #signedBy="ngModel" required />
+        </div>
+        <div *ngIf="signedBy.invalid && signedBy.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Manager’s name </span>
+        </div>
+
+        <!-- 
+        <div class="input-group">
+
+          <input type="password" name="password" ngModel  #password="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"   required placeholder="Password" class="form-control" />
+        </div>
+        <div *ngIf="password.invalid   && password.touched" class="alert alert-danger">
+          <div *ngIf="password.errors.required"> Password is required. </div>
+          <div *ngIf="password.errors.pattern"> Must contain at least one number and one uppercase and lowercase letter,
+              and at least 8 or more characters.</div>
+      </div>
+         -->
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container>
+
+    <ng-container *ngIf="this.type==='PART_ODER'">
+      <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+        <div class="input-group">
+
+          <input type="text" class="form-control" [placeholder]="'Title'" name="title" ngModel #title="ngModel"
+            required />
+        </div>
+        <div *ngIf="title.invalid && title.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Title</span>
+        </div>
+        <div class="input-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="2"
+            name="description" ngModel #description="ngModel" required></textarea>
+
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Description</span>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fadd.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+
+
+
+
+      </form>
+    </ng-container>
+    <ng-container *ngIf="this.type==='add_devi'">
+      <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+        <div>
+          <input class="form-control form-control-lg" (change)="changeSelectedFile02($event)" id="files" type="file"
+            multiple>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fadd.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+
+
+
+
+      </form>
+    </ng-container>
+    <ng-container *ngIf="this.type==='add_bon_commande'">
+      <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+        <div>
+          <input class="form-control form-control-lg" (change)="changeSelectedFile02($event)" id="files" type="file"
+            multiple>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fadd.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+
+
+
+
+      </form>
+    </ng-container>
+
+
+
+    <ng-container *ngIf="this.type==='reason'">
+      <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+        <div class="input-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Reason" rows="2"
+            name="reasonReff" ngModel #reasonReff="ngModel"></textarea>
+
+        </div>
+
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fadd.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+
+
+
+
+      </form>
+    </ng-container>
+
+    <ng-container *ngIf="this.type==='affecte_commerciale'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+
+
+        <!-- 
+
+          <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-brand-myspace"></i></label></span>
+
+        </div>
+ 
+
+ 
+ 
+      -->
+
+        <div *ngIf="this.payload.employeeId" class="input-group">
+          <select #employeeId="ngModel" name="employeeId" class="form-select" [(ngModel)]=" this.payload.employeeId" required>
+            <option *ngFor="let tech of this.listTechnician;" value="{{tech._id}}">
+              {{tech.firstName+" "+tech.lastName}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="!this.payload.employeeId">
+          <div class="input-group">
+            <select class="form-select" value="-1" name="employeeId" [(ngModel)]="this.payload.employeeId" ngModel
+              #employeeId="ngModel" required>
+              <option disabled value="">{{"Select a technician"}}</option>
+              <option *ngFor="let tech of this.listTechnician;" value="{{tech._id}}">
+                {{tech.firstName+" "+tech.lastName}}
+              </option>
+            </select>
+          </div>
+          <div *ngIf="employeeId.invalid && employeeId.touched" class="alert alert-danger p-2" role="alert">
+            <span>Select Commercial</span>
+          </div>
+        </div>
+        <div class="input-group">
+
+          <input type="text" class="form-control" [(ngModel)]="this.payload.sla" [placeholder]="'SLA'" name="sla"
+            ngModel #sla="ngModel" required />
+        </div>
+        <div *ngIf="sla.invalid && sla.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Title</span>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container>
+
+    <!-- affecte_commerciale  -->

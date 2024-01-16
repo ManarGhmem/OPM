@@ -1,0 +1,28 @@
+<div class="container-fluid p-0 mb-5">
+  <div class="header-carousel position-relative">
+    <owl-carousel-o [options]="customOptions">
+
+      <ng-container *ngFor="let slide of slides">
+         <ng-template carouselSlide [id]="slide.id">
+          <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="assets/images/prol.jpeg" alt="" style="height: 550px;">
+
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+         >
+              <div class="container">
+                <!-- <div class="row justify-content-start">
+                  <div class="col-sm-10 col-lg-8">
+                    <h5 class="text-uppercase mb-3 animated slideInDown" style="color: #98D5FF;">Accounting software</h5>
+                    <h1 class="display-3 text-white animated slideInDown">Smart, simple online accounting software for small business</h1>
+                    <p class="fs-5 text-white mb-4 pb-2">Grow your business by accessing our platform which make it easier to track expenses, customise invoices, run reports and even more all from one place.</p> -->
+                  </div>
+                </div>
+              </div>
+            <!-- </div> -->
+          <!-- </div> -->
+         </ng-template>
+      </ng-container>
+
+    </owl-carousel-o>
+  </div>
+</div>

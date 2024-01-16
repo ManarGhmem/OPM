@@ -1,0 +1,717 @@
+<ng-container>
+  <div class="modal-header">
+    <h4 class="modal-title">{{ this.title|translate }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+
+    <ng-container *ngIf="this.type==='WORK_ORDER'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+
+          <select class="form-select" value="-1"  name="employeeId" [(ngModel)]="this.payload.employeeId" ngModel #employeeId="ngModel" required>
+            <option disabled value="">{{"Select a technician"}}</option>
+            <option *ngFor="let tech of this.listTechnician;" value="{{tech._id}}">
+              {{tech.firstName+" "+tech.lastName}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="employeeId.invalid && employeeId.touched" class="alert alert-danger p-2" role="alert">
+          <span>Select technician</span>
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-control"[(ngModel)]="this.payload.title"
+           [placeholder]="'Title'" name="title" ngModel #title="ngModel" required />
+        </div>
+        <div *ngIf="title.invalid && title.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Title</span>
+        </div>
+            <div class="input-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="this.payload.description" placeholder="Description" rows="2"
+            name="description" ngModel #description="ngModel" required></textarea>
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Description</span>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+
+
+
+
+
+
+
+
+      </form>
+    </ng-container>
+
+
+    
+    <ng-container *ngIf="this.type==='PART_ODER'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+
+        <div class="input-group">
+          <input type="text" class="form-control"[(ngModel)]="this.payload.title"
+           [placeholder]="'Title'" name="title" ngModel #title="ngModel" required />
+        </div>
+        <div *ngIf="title.invalid && title.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Title</span>
+        </div>
+            <div class="input-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="this.payload.description" placeholder="Description" rows="2"
+            name="description" ngModel #description="ngModel" required></textarea>
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>ENTER Description</span>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+
+
+
+
+
+
+
+
+      </form>
+    </ng-container>
+
+
+
+<!-- PART_ODER -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ------------------------------------ -->
+    <!-- COMPANY -->
+    <!-- <ng-container *ngIf="this.type==='COMPANY'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.name"
+            [placeholder]="'COMPANY_COMPONENT.POPUP.NAME'|translate" name="name" ngModel #name="ngModel" required />
+        </div>
+        <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"COMPANY_COMPONENT.POPUP.ENTER_NAME"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-company"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.domain"
+            [placeholder]="'COMPANY_COMPONENT.POPUP.DOMAIN'|translate" name="domain" ngModel #domain="ngModel"
+            required />
+        </div>
+        <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"COMPANY_COMPONENT.POPUP.ENTER_DOMAIN"|translate}}</span>
+        </div>
+
+
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+
+          </button>
+        </div>
+      </form>
+    </ng-container> -->
+
+    <!-- EMPLOYEE -->
+    <!-- <ng-container *ngIf="this.type==='EMPLOYEE'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [placeholder]="'EMPLOYEES_COMPONENT.POPUP.FULLNAME'|translate"
+            name="fullname" [(ngModel)]="this.payload.fullname" #fullname="ngModel" required />
+        </div>
+        <div *ngIf="fullname.invalid && fullname.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"EMPLOYEES_COMPONENT.POPUP.ENTER_FULLNAME"|translate}}</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="email" class="form-control" [placeholder]="'EMPLOYEES_COMPONENT.POPUP.EMAIL'|translate"
+            name="email" [(ngModel)]="this.payload.email" #email="ngModel" required />
+        </div>
+        <div *ngIf="email.invalid && email.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"EMPLOYEES_COMPONENT.POPUP.ENTER_EMAIL"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [placeholder]="'EMPLOYEES_COMPONENT.POPUP.ADDRESS'|translate"
+            name="address" [(ngModel)]="this.payload.address" #address="ngModel" required />
+        </div>
+        <div *ngIf="address.invalid && address.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"EMPLOYEES_COMPONENT.POPUP.ENTER_ADDRESS"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="tel" class="form-control" [placeholder]="'EMPLOYEES_COMPONENT.POPUP.PHONE'|translate"
+            name="phone" [(ngModel)]="this.payload.phone" #phone="ngModel" required />
+        </div>
+        <div *ngIf="phone.invalid && phone.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"EMPLOYEES_COMPONENT.POPUP.ENTER_PHONE"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [placeholder]="'EMPLOYEES_COMPONENT.POPUP.SALARY'|translate"
+            name="salary" [(ngModel)]="this.payload.salary" #salary="ngModel" required />
+        </div>
+        <div *ngIf="salary.invalid && salary.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"EMPLOYEES_COMPONENT.POPUP.ENTER_SALARY"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-calendar"></i></label></span>
+          <input class="form-control textbox-n" [type]="birthdateinputype"
+            [placeholder]="'EMPLOYEES_COMPONENT.POPUP.BIRTHDATE'|translate" onkeydown="return false" name="birthdate"
+            [ngModel]="this.payload.birthdate|date:'yyyy-MM-dd'" #birthdate="ngModel" required
+            (click)="setinputtype($event,'birthdate')" max="{{ this.actualDate | date: 'yyyy-MM-dd' }}" />
+        </div>
+        <div *ngIf="birthdate.invalid && birthdate.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"EMPLOYEES_COMPONENT.POPUP.ENTER_BIRTHDATE"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-calendar"></i></label></span>
+          <input class="form-control" [type]="hiredateinputype"
+            [placeholder]="'EMPLOYEES_COMPONENT.POPUP.HIREDATE'|translate" onkeydown="return false" name="hiredate"
+            [ngModel]="this.payload.hiredate|date:'yyyy-MM-dd'" #hiredate="ngModel"
+            (click)="setinputtype($event,'hiredate')" required min="{{ birthdate.value | date: 'yyyy-MM-dd' }}" />
+        </div>
+
+        <div *ngIf="hiredate.invalid && hiredate.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"EMPLOYEES_COMPONENT.POPUP.ENTER_HIREDATE"|translate}}</span>
+        </div>
+
+
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" [checked]="this.payload.gender==='F'" [(ngModel)]="this.payload.gender"
+            #gender="ngModel" type="radio" name="gender" id="F" value="F">
+          <label class="form-check-label" for="inlineRadio1">{{'EMPLOYEES_COMPONENT.POPUP.FEMALE'|translate}}</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" [checked]="this.payload.gender==='M'" [(ngModel)]="this.payload.gender"
+            #gender="ngModel" type="radio" name="gender" id="M" value="M">
+          <label class="form-check-label" for="inlineRadio2">{{'EMPLOYEES_COMPONENT.POPUP.MALE'|translate}}</label>
+        </div>
+
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container> -->
+
+    <!-- ACCOUNTING PLAN -->
+    <!-- <ng-container *ngIf="this.type==='ACCOUNTING_PLAN_ROW'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" min="0" class="form-control" [(ngModel)]="this.payload.account_number"
+            [placeholder]="'ACCOUNTING_PLAN_COMPONENT.POPUP.ACCOUNTNUMBER'|translate" name="account_number" ngModel
+            #account_number="ngModel" required />
+        </div>
+        <div *ngIf="account_number.invalid && account_number.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"ACCOUNTING_PLAN_COMPONENT.POPUP.ENTER_ACCOUNTNUMBER"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-company"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.description" placeholder="Description"
+            name="description" ngModel #domain="ngModel" required />
+        </div>
+        <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"ACCOUNTING_PLAN_COMPONENT.POPUP.ENTER_DESCRIPTION"|translate}}</span>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container> -->
+
+    <!-- TAX -->
+    <!-- <ng-container *ngIf="this.type==='TAX'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.name"
+            [placeholder]="'TAX_COMPONENT.POPUP.NAME'|translate" name="name" ngModel #name="ngModel" required />
+        </div>
+        <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"TAX_COMPONENT.POPUP.ENTER_NAME"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-company"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.description" placeholder="Description"
+            name="description" ngModel #description="ngModel" required />
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"TAX_COMPONENT.POPUP.ENTER_DESCRIPTION"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-company"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.agency_name"
+            [placeholder]="'TAX_COMPONENT.POPUP.AGENCYNAME'|translate" name="agency_name" ngModel #agency_name="ngModel"
+            required />
+        </div>
+        <div *ngIf="agency_name.invalid && agency_name.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"TAX_COMPONENT.POPUP.ENTER_AGENCYNAME"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-company"></i></label></span>
+          <input type="number" class="form-control" [(ngModel)]="this.payload.businessNo"
+            [placeholder]="'TAX_COMPONENT.POPUP.BUSINESS'|translate" name="businessNo" ngModel #businessNo="ngModel" />
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-company"></i></label></span>
+          <input type="date" class="form-control" [ngModel]="this.payload.start_period|date : 'yyyy-MM-dd'"
+            name="start_period" ngModel #start_period="ngModel" required />
+        </div>
+        <div *ngIf="start_period.invalid && start_period.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"TAX_COMPONENT.POPUP.ENTER_STARTPERIOD"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-company"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.filling_frequency"
+            [placeholder]="'TAX_COMPONENT.POPUP.FILLINGFREQ'|translate" name="filling_frequency" ngModel
+            #filling_frequency="ngModel" required />
+        </div>
+        <div *ngIf="filling_frequency.invalid && filling_frequency.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"TAX_COMPONENT.POPUP.ENTER_FILLINGFREQ"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-company"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.collection_type"
+            [placeholder]="'TAX_COMPONENT.POPUP.COLLECTIONTYPE'|translate" name="collection_type" ngModel
+            #collection_type="ngModel" required />
+        </div>
+        <div *ngIf="collection_type.invalid && collection_type.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"TAX_COMPONENT.POPUP.ENTER_COLLECTIONTYPE"|translate}}</span>
+        </div>
+
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container>
+ -->
+
+    <!-- <ng-container *ngIf="this.type==='CUSTOMER'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [placeholder]="'CUSTOMERS_COMPONENT.POPUP.FULLNAME'|translate"
+            [(ngModel)]="this.payload.fullname" name="fullname" ngModel #fullname="ngModel" required />
+        </div>
+        <div *ngIf="fullname.invalid && fullname.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"CUSTOMERS_COMPONENT.POPUP.ENTER_FULLNAME"|translate}}</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="email" class="form-control" [placeholder]="'CUSTOMERS_COMPONENT.POPUP.EMAIL'|translate"
+            name="email" [(ngModel)]="this.payload.email" ngModel #email="ngModel" required />
+        </div>
+        <div *ngIf="email.invalid && email.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"CUSTOMERS_COMPONENT.POPUP.ENTER_EMAIL"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="tel" class="form-control" [placeholder]="'CUSTOMERS_COMPONENT.POPUP.PHONE'|translate"
+            name="phone" [(ngModel)]="this.payload.phone" ngModel #phone="ngModel" required />
+        </div>
+        <div *ngIf="phone.invalid && phone.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"CUSTOMERS_COMPONENT.POPUP.ENTER_PHONE"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [placeholder]="'CUSTOMERS_COMPONENT.POPUP.ADDRESS'|translate"
+            name="address" [(ngModel)]="this.payload.address" ngModel #address="ngModel" required />
+        </div>
+        <div *ngIf="address.invalid && address.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"CUSTOMERS_COMPONENT.POPUP.ENTER_ADDRESS"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [placeholder]="'CUSTOMERS_COMPONENT.POPUP.COMPANY'|translate"
+            name="company_name" [(ngModel)]="this.payload.company_name" ngModel #company_name="ngModel" required />
+        </div>
+        <div *ngIf="company_name.invalid && company_name.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"CUSTOMERS_COMPONENT.POPUP.ENTER_COMPANY"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-brand-myspace"></i></label></span>
+          <select #payment_method="ngModel" name="payment_method" class="form-control"
+            [(ngModel)]=" this.payload.payment_method" required>
+
+            <option value="credit_cards">{{"CUSTOMERS_COMPONENT.POPUP.CARD"|translate}}</option>
+            <option value="bank_check">{{"CUSTOMERS_COMPONENT.POPUP.CHECK"|translate}}</option>
+            <option value="cash_payment">{{"CUSTOMERS_COMPONENT.POPUP.CASH"|translate}}</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container> -->
+<!-- 
+    <ng-container *ngIf="this.type==='SUPPLIERS'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+
+          <input type="text" class="form-control" [(ngModel)]="this.payload.nom_suppliers"
+            [placeholder]="'SUPPLIERS_COMPONENT.POPUP.NAME'|translate" name="nom_suppliers" ngModel
+            #nom_suppliers="ngModel" required />
+        </div>
+        <div *ngIf="nom_suppliers.invalid && nom_suppliers.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"CUSTOMERS_COMPONENT.POPUP.ENTER_NAME"|translate}}</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+
+          <input type="email" class="form-control" [(ngModel)]="this.payload.email_suppliers"
+            [placeholder]="'SUPPLIERS_COMPONENT.POPUP.EMAIL'|translate" name="email_suppliers" ngModel
+            #email_suppliers="ngModel" required />
+        </div>
+        <div *ngIf="email_suppliers.invalid && email_suppliers.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"CUSTOMERS_COMPONENT.POPUP.ENTER_EMAIL"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.adr_suppliers"
+            [placeholder]="'SUPPLIERS_COMPONENT.POPUP.ADDRESS'|translate" name="adr_suppliers" ngModel
+            #adr_suppliers="ngModel" required />
+        </div>
+        <div *ngIf="adr_suppliers.invalid && adr_suppliers.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"CUSTOMERS_COMPONENT.POPUP.ENTER_ADDRESS"|translate}}</span>
+        </div>
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container> -->
+
+    <!-- <ng-container *ngIf="this.type==='PRODUCTS'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-credit-card"></i></label></span>
+          <select class="form-select" name="id_accounting_plan" [(ngModel)]="this.payload.id_accounting_plan" ngModel
+            #id_accounting_plan="ngModel" required>
+            <option disabled value="">{{"PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.ACCOUNTNUMBER"|translate}}</option>
+
+            <option *ngFor="let account of this.accountsList;" value="{{account.id}}">
+              {{account.account_number}}
+            </option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-brand-myspace"></i></label></span>
+          <select class="form-select" name="id_suppliers" ngModel #id_suppliers="ngModel"
+            [(ngModel)]="this.payload.id_suppliers" required>
+            <option disabled value="">{{"PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.SUPPLIER"|translate}}</option>
+            <option *ngFor="let supplier of this.suppliersList;" value="{{supplier.id}}">
+              {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
+            </option>
+          </select>
+        </div>
+
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control"
+            [placeholder]="'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.NAME'|translate" name="name" ngModel
+            #name="ngModel" [(ngModel)]="this.payload.name" required />
+        </div>
+        <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.ENTER_NAME"|translate}}</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control"
+            [placeholder]="'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.REF'|translate" name="ref" ngModel #ref="ngModel"
+            [(ngModel)]="this.payload.ref" required />
+        </div>
+        <div *ngIf="ref.invalid && ref.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.ENTER_REF"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control"
+            [placeholder]="'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.QUANTITY'|translate" name="quantity" ngModel
+            #quantity="ngModel" [(ngModel)]="this.payload.quantity" required />
+        </div>
+        <div *ngIf="quantity.invalid && quantity.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.ENTER_QUANTITY"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-file-text"></i></label></span>
+
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="2"
+            name="description" ngModel #description="ngModel" [(ngModel)]="this.payload.description"
+            required></textarea>
+
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.ENTER_DESCRIPTION"|translate}}</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control"
+            [placeholder]="'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.PRICE'|translate" name="sale_price" ngModel
+            #sale_price="ngModel" [(ngModel)]="this.payload.sale_price" required />
+        </div>
+        <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.ENTER_PRICE"|translate}}</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control"
+            [placeholder]="'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.TAX'|translate" min="0" max="100" name="tax"
+            ngModel #tax="ngModel" [(ngModel)]="this.payload.tax" required />
+        </div>
+        <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.PRODUCTS.POPUP.ENTER_TAX"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control" onkeydown="return false" name="cost"
+            [ngModel]="((sale_price&&quantity&&sale_price.value*quantity.value)+((tax&&tax.value/100)*(sale_price.value*quantity.value))).toFixed(2)"
+            ngModel #cost="ngModel" [(ngModel)]="this.payload.cost" required />
+        </div>
+
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fedit.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container> -->
+<!-- 
+    <ng-container *ngIf="this.type==='SERVICES'">
+      <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-credit-card"></i></label></span>
+          <select class="form-select" value="-1" name="id_accounting_plan" ngModel #id_accounting_plan="ngModel"
+            placeholder="Name" [(ngModel)]="this.payload.id_accounting_plan" required>
+            <option disabled value="">{{"PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.ACCOUNTNUMBER"|translate}}</option>
+            <option *ngFor="let account of this.accountsList;" value="{{account.id}}">
+              {{account.account_number}}
+            </option>
+          </select>
+        </div>
+
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-brand-myspace"></i></label></span>
+          <select class="form-select" name="id_suppliers" ngModel #id_suppliers="ngModel"
+            [(ngModel)]="this.payload.id_suppliers" required>
+            <option disabled value="">{{"PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.SUPPLIER"|translate}}</option>
+
+            <option *ngFor="let supplier of this.suppliersList;" value="{{supplier.id}}">
+              {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
+            </option>
+          </select>
+        </div>
+
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control"
+            [placeholder]="'PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.NAME'|translate" name="name" ngModel
+            #name="ngModel" [(ngModel)]="this.payload.name" required />
+        </div>
+        <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.ENTER_NAME"|translate}}</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control"
+            [placeholder]="'PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.REF'|translate" name="ref" ngModel #ref="ngModel"
+            [(ngModel)]="this.payload.ref" required />
+        </div>
+        <div *ngIf="ref.invalid && ref.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.ENTER_REF"|translate}}</span>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-file-text"></i></label></span>
+
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="2"
+            name="description" ngModel #description="ngModel" [(ngModel)]="this.payload.description"
+            required></textarea>
+
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.ENTER_DESCRIPTION"|translate}}</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control"
+            [placeholder]="'PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.PRICE'|translate" name="sale_price" ngModel
+            #sale_price="ngModel" [(ngModel)]="this.payload.sale_price" required />
+        </div>
+        <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.ENTER_PRICE"|translate}}</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control"
+            [placeholder]="'PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.TAX'|translate" min="0" max="100" name="tax"
+            ngModel #tax="ngModel" [(ngModel)]="this.payload.tax" required />
+        </div>
+        <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
+          <span>{{"PRODUCTS_SERVICES_COMPONENT.SERVICES.POPUP.ENTER_TAX"|translate}}</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control" placeholder="Cost"
+            [ngModel]="(    (sale_price&&sale_price.value)+((tax&&tax.value/100)*sale_price.value)    ).toFixed(2)"
+            onkeydown="return false" name="cost" ngModel #cost="ngModel" required />
+        </div>
+
+
+        <div class="modal-footer">
+          <input [value]="'CONFIRM'|translate" [disabled]="fadd.invalid" type="submit"
+            class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            {{'CANCEL'|translate}}
+          </button>
+        </div>
+      </form>
+    </ng-container> -->
+
+  </div>
+</ng-container>

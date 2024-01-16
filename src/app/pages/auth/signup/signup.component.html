@@ -1,0 +1,252 @@
+<app-navbar></app-navbar>
+<!-- Section: Design Block -->
+<section class="text-center" style="background: #B39188;">
+  <!-- Background image -->
+  <div class="p-5 bg-image" style="
+      background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+      height: 125px;
+      background: #B39188;">
+    </div>
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+      margin-top: -100px;
+      background: #E8D5CC; 
+      backdrop-filter: blur(30px);">
+    <div class="card-body py-5 px-md-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="text-primary fw-bold mb-5">Signup Now</h2>
+          <form name="form" (ngSubmit)="signup(fadd)" #fadd="ngForm" novalidate>
+
+            <div class="input-group">
+              <select class="form-select" value="-1" name="authority" ngModel #type="ngModel" (change)="changeOperation($event.target.value)" required>
+                <option value="">select a authority</option>
+                <option value="client" >Client</option>
+                <option value="commercial" >Commercial</option>
+                <option value="technician" >Technician</option>
+              </select>
+            </div>
+            <div *ngIf="type.invalid && type.touched" class="alert alert-danger p-2" role="alert">
+              <span>chos a opject</span>
+            </div>
+
+            <ng-container *ngIf="this.authority=='client'">
+
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="email" name="email" ngModel #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email address"
+                    class="form-control" required />
+                    <div *ngIf="email.touched">
+                      <p class="alert alert-danger p-2" role="alert" *ngIf="email.errors?.required">Email is a required field!</p>
+                      <p class="alert alert-danger p-2" role="alert" *ngIf="email.errors?.pattern">This is not a valid Email!!!</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="password" ngModel #pass="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" placeholder="Password"
+                    class="form-control" required />
+                    <div *ngIf="pass.invalid   && pass.touched" class="alert alert-danger">
+                      <div *ngIf="pass.errors.required"> Password is required. </div>
+                      <div *ngIf="pass.errors.pattern"> Must contain at least one number and one uppercase and lowercase letter,
+                          and at least 8 or more characters.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="password" name="pass2" ngModel #pass2="ngModel" placeholder="Confirm Password"
+                    class="form-control" required />
+                  <div *ngIf="
+                      (pass2.invalid && pass2.touched) ||
+                      (pass.value != pass2.value && pass2.valid)
+                    " class="alert alert-danger p-2" role="alert">
+                    ne pas correspondre
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="text" ngModel #company="ngModel" name="company" placeholder="Company Name"
+                    class="form-control" required />
+                  <div *ngIf="company.invalid && company.touched" class="alert alert-danger p-2" role="alert">
+                    Enter Company Name
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="text" name="terms" ngModel #terms="ngModel" placeholder="Terms"
+                    class="form-control" required />
+                  <div *ngIf="
+                      (terms.invalid && terms.touched)
+                    " class="alert alert-danger p-2" role="alert">
+                    ne pas correspondre
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--  -->
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="text" name="sla" ngModel #sla="ngModel" placeholder="SLA"
+                    class="form-control" required />
+                  <div *ngIf="sla.invalid && sla.touched" class="alert alert-danger p-2" role="alert">
+                    Enter sla
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <!-- <input type="text" name="terms" ngModel #terms="ngModel" placeholder="Terms"
+                  class="form-control" required /> -->
+                  <input class="form-control textbox-n" type="date"
+                  [placeholder]="'tetetetetet'" onkeydown="return false" name="endDate"
+                  ngModel #endDate="ngModel" required
+                  (click)="setinputtype($event,'endDate')" min="{{ this.actualDate | date: 'yyyy-MM-dd' }}" />
+                    <div *ngIf="endDate.invalid && endDate.touched" class="alert alert-danger p-2" role="alert">
+                      Enter End Date
+                    </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+            <div class="input-group">
+
+              <select class="form-select" value="-1" name="type" ngModel #type="ngModel" required>
+                <option disabled value="">{{"Contract  Type "}}</option>
+                <option value="INFO-GERANCE">INFO-GERANCE</option>
+                <option value="SUPPORT AND MAINTENANCE">SUPPORT & MAINTENANCE</option>
+              </select>
+            </div>
+            <div *ngIf="type.invalid && type.touched" class="alert alert-danger p-2" role="alert">
+              <span>Select Type</span>
+            </div>
+              <!--  -->
+</div>
+              <!-- contract contract -->
+
+
+
+            <!-- -->
+
+
+            <button type="submit" [disabled]="fadd.invalid && type.invalid" class="btn btn-primary btn-block mb-4" id="btnconfirm">
+              <span style="color:white;font-weight:bold">Confirm</span>
+            </button>
+
+
+          </ng-container>
+          <ng-container *ngIf="this.authority=='commercial' || this.authority=='technician'">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="text" ngModel #firstName="ngModel" name="firstName" placeholder="First Name "
+                    class="form-control" required />
+                  <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger p-2" role="alert">
+                    Enter First Name
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="text" name="lastName" ngModel #lastName="ngModel" placeholder="Last Name"
+                    class="form-control" required />
+                  <div *ngIf="
+                      (lastName.invalid && lastName.touched)
+                    " class="alert alert-danger p-2" role="alert">
+                    ne pas correspondre
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="email" name="email" ngModel #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email address"
+                    class="form-control" required />
+                    <div *ngIf="email.touched">
+                      <p class="alert alert-danger p-2" role="alert" *ngIf="email.errors?.required">Email is a required field!</p>
+                      <p class="alert alert-danger p-2" role="alert" *ngIf="email.errors?.pattern">This is not a valid Email!!!</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="password" ngModel #pass="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" placeholder="Password"
+                    class="form-control" required />
+                    <div *ngIf="pass.invalid   && pass.touched" class="alert alert-danger">
+                      <div *ngIf="pass.errors.required"> Password is required. </div>
+                      <div *ngIf="pass.errors.pattern"> Must contain at least one number and one uppercase and lowercase letter,
+                          and at least 8 or more characters.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="password" name="pass2" ngModel #pass2="ngModel" placeholder="Confirm Password"
+                    class="form-control" required />
+                  <div *ngIf="
+                      (pass2.invalid && pass2.touched) ||
+                      (pass.value != pass2.value && pass2.valid)
+                    " class="alert alert-danger p-2" role="alert">
+                    ne pas correspondre
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div class="form-outline mb-4">
+                  <input class="form-control textbox-n" type="date"
+                  [placeholder]="'tetetetetet'" onkeydown="return false" name="birthDate"
+                  ngModel #birthDate="ngModel" required
+                  (click)="setinputtype($event,'birthDate')" max="{{ this.actualDate | date: 'yyyy-MM-dd' }}" />
+                    <div *ngIf="birthDate.invalid && birthDate.touched" class="alert alert-danger p-2" role="alert">
+                      Enter End Date
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <!--  -->
+
+
+
+              <!--  -->
+
+              <!-- contract contract -->
+
+
+
+            <!-- -->
+
+
+            <button type="submit" [disabled]="fadd.invalid" class="btn btn-primary btn-block mb-4" id="btnconfirm">
+              <span style="color:white;font-weight:bold">Confirm</span>
+            </button>
+
+
+          </ng-container>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
